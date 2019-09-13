@@ -1,15 +1,15 @@
-*user table
- *user id:integer
- *user name:string
- *user email:varcharacter
- *user password :varcharacter
- *user title:string
+*able
+ *id:integer
+ *name:string
+ *email:varcharacter
+ *password :varcharacter
+ *itle:string
 
- task table
-  * task id:integer
-  *task name:string
-  *task start date:date
-  *task end date:date
-  *task status:string
-  *task priority:string
-  
+*task table
+  *id:integer
+  *name:string
+  *start_date:date
+  *end_date:date
+  *status:string
+  *priority:string
+
