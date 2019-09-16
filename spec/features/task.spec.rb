@@ -3,6 +3,17 @@ require 'rails_helper'
 
 # On the right side of this RSpec.feature, write the test item name like "task management feature" (grouped by do ~ end)
 RSpec.feature "Task management function", type: :feature do
+    background do
+        FactoryBot.create(:task, name: 'Added name 1')
+        FactoryBot.create(:task, name: 'Added name 2')
+        FactoryBot.create(:second_task, name 'Added name 3', content: 'Added content')
+      end
+    
+    background do
+        # Create two tasks in advance to use in the task list test
+        FactoryBot.create(:task)
+        FactoryBot.create(:second_task)
+      end
   # In scenario (alias of it), write the processing of the test for each item you want to check.
   scenario "Test task list" do
   Task.create!(name: 'test_task_01', content: 'testtesttest')
@@ -17,7 +28,14 @@ RSpec.feature "Task management function", type: :feature do
   expect(page).to have_content 'samplesample'
 
   end
-
+  scenario "Test whether tasks are arranged in descending order of creation date" do
+    # Create two tasks in advance to use in the task sorting confirmation test
+    # (The same description as above will be repeated!)
+    Task.create!(name: 'test_task_01', content: 'testtesttest')
+    Task.create!(name: 'test_task_03', content: 'samplesample')
+  
+    # Test whether tasks are arranged in descending order of creation date
+  end
   scenario "Test task creation" do
  # visit to new_task_path (transition to task registration page)
   # 1.Write the process to visit new_task_path here
@@ -36,6 +54,8 @@ RSpec.feature "Task management function", type: :feature do
   end
 
   scenario "Test task details" do
-
+    scenario "Test whether tasks are arranged in descending order of creation date" do
+  end
+  scenario "Test whether tasks are arranged in descending order of creation date" do
   end
 end
