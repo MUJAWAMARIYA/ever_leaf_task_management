@@ -6,6 +6,10 @@ class TasksController < ApplicationController
   def index
     @tasks = Task.all
     @tasks = Task.order('created_at DESC')
+    <%= form_tag(search_users_path, method: 'get') do %>
+      <%= text_field_tag(:search, params[:search]) %>
+      <%= submit_tag("Search", name: nil) %>
+<% end %>
   end
 
   # GET /tasks/1
@@ -59,6 +63,9 @@ class TasksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
       format.json { head :no_content }
+    end
+    def search
+      @task = task.search(params[:search])
     end
   end
 
