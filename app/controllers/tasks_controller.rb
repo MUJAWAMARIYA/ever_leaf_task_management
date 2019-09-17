@@ -4,14 +4,16 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
-    @tasks = Task.order('created_at DESC')
-    <%= form_tag(search_users_path, method: 'get') do %>
-      <%= text_field_tag(:search, params[:search]) %>
-      <%= submit_tag("Search", name: nil) %>
-<% end %>
+    tasks = Task.all
+    asks = Task.order('created_at DESC')
+    @tasks = Task.search(params[:term])
+    @tasks = if params[:term]
+      Task.where('status LIKE ?', "%#{params[:term]}%")
+    else
+      Task.all
+    end
   end
-
+  
   # GET /tasks/1
   # GET /tasks/1.json
   def show
@@ -63,9 +65,6 @@ class TasksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
       format.json { head :no_content }
-    end
-    def search
-      @task = task.search(params[:search])
     end
   end
 
