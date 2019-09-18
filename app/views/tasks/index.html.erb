@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<%= paginate @tasks %>
 <h1>Tasks</h1>
 
 <table>
@@ -38,5 +38,5 @@
   <%= submit_tag 'Search', name: nil %>
 <% end %>
 <br>
-
+<%= paginate @tasks %>
 <%= link_to 'New Task', new_task_path %>
