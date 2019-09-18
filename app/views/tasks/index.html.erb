@@ -33,10 +33,7 @@
     <% end %>
   </tbody>
 </table>
-<%= form_tag(tasks_path, method: :get) do %>
-  <%= text_field_tag :term, params[:term] %>
-  <%= submit_tag 'Search', name: nil %>
-<% end %>
+
 <br>
 <%= paginate @tasks %>
 <%= link_to 'New Task', new_task_path %>

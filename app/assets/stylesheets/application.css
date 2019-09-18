@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+ .navbar{
+     background-color:blue;
+ }
+ .body{
+     background-color:skyblue;
+
+ }
+.footer{
+    background-color: blue;
+    margin-top: 200px;
+    text-align: center;
+    height: 50px;;
+}
+table{
+    margin-left: 7rem;
+}
