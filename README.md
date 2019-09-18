@@ -11,8 +11,7 @@ column| data_type
 task table
 
 column| data_type
-------|  ---------
-
+------| ---------
   id(fk)| integer
   name| string
   start_date| date
