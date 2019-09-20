@@ -1,5 +1,5 @@
 class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
-  validates :name, :content, :kind_of_task, presence: true
+  # validates :name, :content, :kind_of_task,  :priority,:status, presence: true
   
 end

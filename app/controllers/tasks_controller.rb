@@ -4,6 +4,9 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
+   
+      @tasks = Task.all	   
+      @tasks = Task.order('created_at DESC')
     
     @tasks = if params[:term]
       Task.where('priority LIKE ?', "%#{params[:term]}%").page(params[:page])
