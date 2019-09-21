@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base 
+ 
     def self.search(term, page)
         if term
           where('priority LIKE ?', "%#{term}%").order('id DESC')

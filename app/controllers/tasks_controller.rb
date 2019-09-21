@@ -33,8 +33,11 @@ class TasksController < ApplicationController
   # POST /tasks
   # POST /tasks.json
   def create
+    
+  
     @task = Task.new(task_params)
-
+    @task.user_id = current_user.id # Insert the currently logged in user's id into the blog's user_id column
+   
     respond_to do |format|
       if @task.save
         format.html { redirect_to @task, notice: 'Task was successfully created.' }
@@ -69,7 +72,11 @@ class TasksController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  def confirm
+    @task = Task.new(blog_params)
+    @task.user_id = current_user.id # Insert the currently logged in user's id into the blog's user_id column
+    render :new if @task.invalid?
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task
