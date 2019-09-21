@@ -17,9 +17,11 @@ RSpec.feature "Task management function", type: :feature do
   
    # In the input field labeled "Task Name" and in the input field labeled "Task Details"
    # Fill in the task title and content respectively
-   Task.create!(name: 'test_task_1', content: 'testtesttest',start_date: '10.2.2019', end_date: '20.10.2019',kind_of_task: 'database',priority: 'medium', status: 'completed')
-   Task.create!(name: 'test_task_2', content: 'samplesample',start_date: '10.2.2019', end_date: '20.10.2019',kind_of_task: 'database',priority: 'medium', status: 'completed')
-   # Click_on a button with a value (notation letter) of “Register”
+   fill_in  'Name' ,  with: 'completed'
+   fill_in  'Content' ,  with: 'ruby task'
+  #  Task.create!(name: 'test_task_1', content: 'testtesttest',start_date: '10.2.2019', end_date: '20.10.2019',kind_of_task: 'database',priority: 'medium', status: 'completed')
+  #  Task.create!(name: 'test_task_2', content: 'samplesample',start_date: '10.2.2019', end_date: '20.10.2019',kind_of_task: 'database',priority: 'medium', status: 'completed')
+  #  # Click_on a button with a value (notation letter) of “Register”
    click_on  'Create Task'
    # Check if the information that is supposed to be registered by click is displayed on the task detail page
    # (Assumption that transition to the task details screen will be made if the task is registered)
