@@ -23,7 +23,7 @@ RSpec.feature "Task management function", type: :feature do
    click_on  'Create Task'
    # Check if the information that is supposed to be registered by click is displayed on the task detail page
    # (Assumption that transition to the task details screen will be made if the task is registered)
-   #expect(page).to  have_content('testtesttest')
+   expect(page).to  have_content('Task was successfully created.')
  end
  scenario "Test task details" do
    @task = Task.create!(name: 'test_task_01', content: 'testtesttest',kind_of_task: 'database',start_date: '10.2.2019', end_date: '20.10.2019',priority: 'medium',status: 'completed')
