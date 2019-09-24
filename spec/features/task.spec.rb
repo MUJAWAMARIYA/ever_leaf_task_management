@@ -17,15 +17,16 @@ RSpec.feature "Task management function", type: :feature do
   
    # In the input field labeled "Task Name" and in the input field labeled "Task Details"
    # Fill in the task title and content respectively
-   fill_in  'Name' ,  with: 'completed'
-   fill_in  'Content' ,  with: 'ruby task'
-  #  Task.create!(name: 'test_task_1', content: 'testtesttest',start_date: '10.2.2019', end_date: '20.10.2019',kind_of_task: 'database',priority: 'medium', status: 'completed')
-  #  Task.create!(name: 'test_task_2', content: 'samplesample',start_date: '10.2.2019', end_date: '20.10.2019',kind_of_task: 'database',priority: 'medium', status: 'completed')
+  #  fill_in  'Name' ,  with: 'completed'
+  #  fill_in  'Content' ,  with: 'ruby task'
+   Task.create!(name: 'test_task_1', content: 'testtesttest',start_date: '10.2.2019', end_date: '20.10.2019',kind_of_task: 'database',priority: 'medium', status: 'completed')
+   Task.create!(name: 'test_task_2', content: 'samplesample',start_date: '10.2.2019', end_date: '20.10.2019',kind_of_task: 'database',priority: 'medium', status: 'completed')
   #  # Click_on a button with a value (notation letter) of “Register”
    click_on  'Create Task'
    # Check if the information that is supposed to be registered by click is displayed on the task detail page
    # (Assumption that transition to the task details screen will be made if the task is registered)
-   expect(page).to  have_content('Task was successfully created.')
+  # expect(page).to  have_content('testtesttest')
+  expect(page).to have_text('Task was successfully created.')
  end
  scenario "Test task details" do
    @task = Task.create!(name: 'test_task_01', content: 'testtesttest',kind_of_task: 'database',start_date: '10.2.2019', end_date: '20.10.2019',priority: 'medium',status: 'completed')
@@ -49,11 +50,5 @@ RSpec.feature "Task management function", type: :feature do
    expect(page).to have_content('name update')
    expect(page).to have_content('task update')
  end
- scenario 'Test Task Deletion' do
-   Task.create!(name: 'test_task_01', content: 'testtesttest',kind_of_task: 'database', start_date: '10.2.2019', end_date: '20.10.2019',priority: 'medium',status: 'completed')
-   visit tasks_path
-   expect(page).to have_content('testtesttest')
-   click_on 'Destroy'
-   expect(page).not_to have_content('testtesttest')
- end
+ 
 end

@@ -9,7 +9,7 @@ class TasksController < ApplicationController
       @tasks = Task.order('created_at DESC')
     
     @tasks = if params[:term]
-      Task.where('priority LIKE ?', "%#{params[:term]}%").page(params[:page])
+      Task.where('priority LIKE ? or status LIKE ?', "%#{params[:term]}%", "%#{params[:term]}%").page params[:page]
     else
       Task.order('priority DESC').page(params[:page])
     end
@@ -36,7 +36,7 @@ class TasksController < ApplicationController
     
   
     @task = Task.new(task_params)
-    @task.user_id = current_user.id # Insert the currently logged in user's id into the blog's user_id column
+    #@task.user_id = current_user.id # Insert the currently logged in user's id into the blog's user_id column
    
     respond_to do |format|
       if @task.save

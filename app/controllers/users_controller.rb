@@ -55,8 +55,7 @@ def current_user
 end
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password,
-                                 :password_confirmation,:title)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation,:title)
   end
  end
  
