@@ -22,6 +22,7 @@
   <%= form_tag(tasks_path, method: :get) do %>
     <%= text_field_tag :term, params[:term] %>
     <%= submit_tag 'Search', name: nil %>
+    
   <% end %>
 </nav>
 </header>
