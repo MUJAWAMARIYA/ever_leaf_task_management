@@ -12,7 +12,7 @@ def self.search(term)
 end
 def self.order_list(sort_order)
     if sort_order == "end_date"
-        order(end_date: :desc)
+        order(end_date: :asc)
     elsif sort_order == "status"
         order(Status: :desc)
         elsif sort_order == "priority"
