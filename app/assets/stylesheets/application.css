@@ -29,3 +29,17 @@
 table{
     margin-left: 7rem;
 }
+th{
+    font-size: 18px;
+    color:blueviolet;
+}
+td{
+   padding:1rem; 
+   font-size: 15px;
+   color:seagreen;
+}
+p{
+    font-size: 18px;
+    
+color: brown;
+}

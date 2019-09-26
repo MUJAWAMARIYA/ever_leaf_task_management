@@ -28,17 +28,22 @@
         <td><%= task.status %></td>
         <td><%= task.user_id %></td>
         <td><%= link_to 'Show', task %></td>
-        <% if logged_in? %>
+        
         <td><%= link_to 'Edit', edit_task_path(task) %></td>
         <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-      <% end %>
+      
     <% end %>
   </tbody>
 </table>
 
 <br>
 <%= paginate @tasks %>
-<% if logged_in? %>
+<br>
+<p>Sort by: 
+<%= link_to "sort by deadline",tasks_path(sort_by: 'End_date')  %>
+<%= link_to "status", tasks_path(order: 'Status') %>,
+<%= link_to "priority", tasks_path(order: 'Priority') %>
+</p>
+<br>
 <%= link_to 'New Task', new_task_path %>
-<% end %>

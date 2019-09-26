@@ -5,13 +5,13 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
    
-      @tasks = Task.all	   
-      @tasks = Task.order('created_at DESC')
+      #@tasks = Task.all	   
+      #@tasks = Task.order('created_at DESC')
     
     @tasks = if params[:term]
       Task.where('priority LIKE ? or status LIKE ?', "%#{params[:term]}%", "%#{params[:term]}%").page params[:page]
     else
-      Task.order('priority DESC').page(params[:page])
+      Task.order_list(params[:sort_by]).page params[:page]
     end
   
   end
