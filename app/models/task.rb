@@ -5,7 +5,7 @@ class Task < ApplicationRecord
 
 def self.search(term)
     if term
-        where("status or priority or end_date LIKE ?", "%# {term}%")
+        where("status or priority or end_date LIKE ?", "%# {term}%").page params[:page]
     else
         order(' id asc')
     end
@@ -22,6 +22,6 @@ def self.order_list(sort_order)
         end
     end
 
-paginates_per 3
+paginates_per 18
 end
 
