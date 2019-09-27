@@ -19,7 +19,6 @@
 #     end
 #  end
 
-
 #  <% flash.each do |key, value| %>
 #         <%= content_tag(:div, value, class: "#{key}") %>
 #      <% end %>
@@ -29,4 +28,4 @@
 #      <% else %>
 #        <%= link_to "Sign up", new_user_path %>
 #        <%= link_to "Login", new_session_path %>
-#     <% en
+#     <% end %>
