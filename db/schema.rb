@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 2019_09_27_080839) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-
-    t.index ["user_id"], titles: "index_tasks_on_user_id"
+    t.string "title"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
