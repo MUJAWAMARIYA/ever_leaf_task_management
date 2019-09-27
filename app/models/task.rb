@@ -16,12 +16,12 @@ def self.order_list(sort_order)
     elsif sort_order == "status"
         order(Status: :desc)
         elsif sort_order == "priority"
-            order(Priority: :asc)
+            order(Priority: :desc)
         else
             order(created_at: :desc)
         end
     end
 
-paginates_per 2
+paginates_per 77
 end
 
