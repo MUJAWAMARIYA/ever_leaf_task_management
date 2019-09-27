@@ -9,7 +9,7 @@ class TasksController < ApplicationController
       #@tasks = Task.order('created_at DESC')
     
     @tasks = if params[:term]
-      Task.where('priority LIKE ? or status LIKE ?', "%#{params[:term]}%", "%#{params[:term]}%").page params[:page]
+      Task.where('titles LIKE ? or status LIKE ? or priority LIKE ?', "%#{params[:term]}%", "%#{params[:term]}%", "%#{params[:term]}%").page params[:page]
     else
       Task.order_list(params[:sort_by]).page params[:page]
     end
@@ -24,6 +24,7 @@ class TasksController < ApplicationController
   # GET /tasks/new
   def new
     @task = Task.new
+    
   end
 
   # GET /tasks/1/edit
@@ -73,7 +74,7 @@ class TasksController < ApplicationController
     end
   end
   def confirm
-    @task = Task.new(blog_params)
+    @task = Task.new(task_params)
     @task.user_id = current_user.id # Insert the currently logged in user's id into the blog's user_id column
     render :new if @task.invalid?
   end
@@ -85,6 +86,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:name, :content, :start_date, :end_date, :kind_of_task, :priority, :status)
+      params.require(:task).permit(:titles, :content, :start_date, :end_date, :kind_of_task, :priority, :status)
     end
 end

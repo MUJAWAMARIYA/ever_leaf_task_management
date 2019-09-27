@@ -1,11 +1,11 @@
 class Task < ApplicationRecord
-    validates :name, :content, presence: true    
+    validates :titles, :content, presence: true    
 
 # belongs_to :user
 
 def self.search(term)
     if term
-        where("status or priority or  LIKE ?", "%# {term}%")
+        where("status or priority or end_date LIKE ?", "%# {term}%")
     else
         order(' id asc')
     end
@@ -22,6 +22,6 @@ def self.order_list(sort_order)
         end
     end
 
-paginates_per 4
+paginates_per 2
 end
 
