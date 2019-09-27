@@ -22,6 +22,6 @@ def self.order_list(sort_order)
         end
     end
 
-paginates_per 77
+paginates_per 3
 end
 

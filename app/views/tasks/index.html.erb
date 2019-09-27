@@ -40,11 +40,13 @@
 </table>
 
 <br>
+<div class="page">
 <%= paginate @tasks %>
+</div>
 <br>
 <p>Sort by: 
-<%= link_to "sort by deadline",tasks_path(sort_by: 'end_date')  %>
-<%= link_to "status", tasks_path(order: 'status') %>,
+<%= link_to "sort by deadline", tasks_path(sort_by: 'end_date')  %>
+<%= link_to "status", tasks_path(order: 'status') %>
 <%= link_to "priority", tasks_path(order: 'priority') %>
 </p>
 <br>
