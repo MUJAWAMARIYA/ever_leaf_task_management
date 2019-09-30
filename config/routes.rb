@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   resources :tasks
   root 'tasks#index'
  #root 'sessions#new'
-  #root 'tasks#index'
   
   resources :sessions, only: [:new, :create, :destroy]
   resources :users

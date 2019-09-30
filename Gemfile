@@ -66,3 +66,4 @@ gem 'kaminari'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bcrypt'
 gem 'paperclip'
+gem 'rails_admin'

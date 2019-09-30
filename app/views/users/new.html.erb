@@ -26,6 +26,9 @@
 
   <%= f.label :title%>
   <%= f.text_field :title %>
+
+  <%= f.label :admin %>
+  <%= f.text_field :admin %>
   <%= link_to 'Back', { controller: 'users', action: 'index'} %>   
   <%= f.submit "Create my account" %>
 <% end %>
