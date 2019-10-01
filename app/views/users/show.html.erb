@@ -1,0 +1,25 @@
+<h1>Welcome <%= @user.name %>  on your page </h1>
+
+<div class="container">        
+        <h3>create your tasks .</h3>   
+       
+            <div>   
+              <label>user Name:</label>   
+              <%= @user.name %>   
+            </div>   
+  
+            <div>   
+              <label>email:</label>   
+              <%= @user.email%>   
+            </div>   
+            
+            <div>   
+              <label>title:</label>   
+              <%= @user.title%>   
+            </div>   
+         
+      <div>   
+      <%= link_to 'New Task', new_task_path %>
+        <%= link_to 'Back', { controller: 'users', action: 'index'} %>   
+      </div>   
+</div>  

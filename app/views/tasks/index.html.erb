@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+<%= paginate @tasks %>
+<h1>Tasks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Titles</th>
+      <th>Content</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Kind of task</th>
+      <th>Priority</th>
+      <th>Status</th>
+      
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.titles%></td>
+        <td><%= task.content %></td>
+        <td><%= task.start_date %></td>
+        <td><%= task.end_date %></td>
+        <td><%= task.kind_of_task %></td>
+        <td><%= task.priority %></td>
+        <td><%= task.status %></td>
+       
+        <td><%= task.user_id %></td>
+        <td><%= link_to 'Show', task %></td>
+        <% if logged_in? %>
+        <td><%= link_to 'Edit', edit_task_path(task) %></td>
+        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+        </tr>
+    
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<div class="page">
+<%= paginate @tasks %>
+</div>
+<br>
+<p>Sort by: 
+<%= link_to "sort by deadline", tasks_path(sort_by: 'end_date')  %>
+<%= link_to "status", tasks_path(order: 'status') %>
+<%= link_to "priority", tasks_path(order: 'priority') %>
+</p>
+<br>
+<% if logged_in? %>
+<%= link_to 'New Task', new_task_path %>
+<% end %>
