@@ -1,4 +1,4 @@
-class Admin::BaseCOntroller < ApplicationController
+class Admin::BaseCOntroller < Admin::ApplicationController
 before_filter :ensure_admin_user!
 
 def ensure_admin_user!
