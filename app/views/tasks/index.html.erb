@@ -51,6 +51,4 @@
 <%= link_to "priority", tasks_path(order: 'priority') %>
 </p>
 <br>
-<% if logged_in? %>
 <%= link_to 'New Task', new_task_path %>
-<% end %>
