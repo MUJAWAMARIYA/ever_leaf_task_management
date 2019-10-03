@@ -2,7 +2,6 @@ class Task < ApplicationRecord
     validates :titles, :content, presence: true    
 
  belongs_to :user, optional: true
-
 def self.search(term)
     if term
         where("status or priority or end_date LIKE ?", "%# {term}%").page params[:page].per_page(3)
