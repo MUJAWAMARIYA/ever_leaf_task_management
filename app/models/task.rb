@@ -22,5 +22,6 @@ def self.order_list(sort_order)
     end
 
 paginates_per 2
+
 end
 
