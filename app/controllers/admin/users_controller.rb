@@ -1,9 +1,14 @@
 class Admin::UsersController < Admin::ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
   def index
-    @users = User.all
+  
+      unless current_user.admin?
+        redirect_to :users, :alert => "Access denied."
+      end
+      @users = User.all
+    end
     
-  end
+  
   def new
     @user = User.new
   
