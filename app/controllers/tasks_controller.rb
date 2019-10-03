@@ -37,7 +37,7 @@ class TasksController < ApplicationController
     
   
     @task = Task.new(task_params)
-    @task.user_id = current_user.id # Insert the currently logged in user's id into the blog's user_id column
+    # @task.user_id = current_user.id # Insert the currently logged in user's id into the blog's user_id column
    
     respond_to do |format|
       if @task.save

@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2019_09_30_100710) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "admin", default: false
+    t.boolean "admin"
   end
 
   add_foreign_key "tasks", "users"
