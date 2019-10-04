@@ -3,12 +3,12 @@ require 'rails_helper'
 RSpec.feature "Task management function", type: :feature do
  # In scenario (alias of it), write the processing of the test for each item you want to check
  background  do
-   User.create!(name: "Armel", email: 'ni@gmail.Com',  password: '1234567')
+   User.create!(name: "margo", email: 'm@gmail.Com',  password: '1234567')
    
 end
 scenario "Test task list" do
    visit  root_path
-   fill_in  'Email',  with: 'ni@gmail.Com'
+   fill_in  'Email',  with: 'm@gmail.Com'
    fill_in  'Password' ,  with: '1234567'
    click_on  'Log in'
   expect(page).to have_text('')
@@ -23,7 +23,7 @@ end
  # write a test to verify that the string "" testtesttest "" samplesample "is included when accessing the task list page using have_content method
  scenario "Test task creation" do
    visit  root_path
-   fill_in  'Email',  with: 'ni@gmail.Com'
+   fill_in  'Email',  with: 'm@gmail.Com'
    fill_in  'Password',  with: '1234567'
    click_on  'Log in'
    expect(page ).to have_text('')
@@ -35,7 +35,7 @@ end
  end
  scenario "Test task details" do
    visit  root_path
-   fill_in  'Email',  with: 'ni@gmail.Com'
+   fill_in  'Email',  with: 'm@gmail.Com'
    fill_in  'Password',  with: '1234567'
    click_on  'Log in'
    expect(page ).to have_text('')
@@ -48,7 +48,7 @@ end
  end
  scenario 'task must be true' do
    visit  root_path
-   fill_in  'Email',  with: 'ni@gmail.Com'
+   fill_in  'Email',  with: 'm@gmail.Com'
    fill_in  'Password',  with: '1234567'
    click_on  'Log in'
    expect(page ).to have_text('')
@@ -71,7 +71,7 @@ end
  end
  it "validation passes If content is described in titles and content" do
    visit  root_path
-   fill_in  'Email',  with: 'ni@gmail.Com'
+   fill_in  'Email',  with: 'm@gmail.Com'
    fill_in  'Password' ,  with: '1234567'
    click_on  'Log in'
    expect(page).to have_text('')
