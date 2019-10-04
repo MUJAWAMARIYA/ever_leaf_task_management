@@ -14,14 +14,14 @@
  *= require_self
  */
  .navbar{
-     background-color:blue;
+     background-color:#e6b2ee;
  }
  .body{
      background-color:skyblue;
 
  }
 .footer{
-    background-color: blue;
+    background-color: #e6b2ee;
     margin-top: 200px;
     text-align: center;
     height: 50px;;
@@ -32,6 +32,8 @@ table{
 th{
     font-size: 18px;
     color:blueviolet;
+    
+    font-family:'Lucida Sans';
 }
 td{
    padding:1rem; 
@@ -41,9 +43,32 @@ td{
 p{
     font-size: 40px;
 
-color: brown;
+    color:blueviolet;
 }
 .page{
 color: blue;
     font-size: 40px;
+
+    font-family:'Lucida Sans';
+}
+h1{
+margin-left: 15rem;
+    color: blue;
+    font-family:'Lucida Sans';
+}
+#btn{
+    margin-left: 8rem;
+    width: 60%;
+    padding:8px;
+background-color: #EBD9DD;
+color: black;
+}
+#btnn{
+    margin-left: 20rem;
+    width: 45%;
+    height: 80px;
+}
+.admin{
+    background-color: pink;
+    margin-left: 5rem;
 }

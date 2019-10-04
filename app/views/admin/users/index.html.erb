@@ -1,9 +1,9 @@
 <% @users.each do |user| %>
     <h1> user list screen of management screen!</h1>
-     name is : <% user.id %> <%= user.name %><br>
+     <div class="admin">
+    name is : <% user.id %> <%= user.name %><br>
     email:<%= user.email %><br>
     title: <%= user.admin %><br><br>
-    
+    </div>
     <% end %>
    
-    

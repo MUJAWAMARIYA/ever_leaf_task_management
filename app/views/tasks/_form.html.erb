@@ -11,44 +11,44 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="btn btn-primary", id="btn">
     <%= form.label :titles %>
-    <%= form.text_field :titles %>
+    <%= form.text_field :titles %><br>
   </div>
-
-  <div class="field">
+  <br>
+  <div class="btn btn-primary", id="btn">
     <%= form.label :content %>
     <%= form.text_field :content %>
   </div>
-
-  <div class="field">
+  <br>
+  <div class="btn btn-primary", id="btn">
     <%= form.label :start_date %>
     <%= form.datetime_select :start_date %>
   </div>
-
-  <div class="field">
+  <br>
+  <div class="btn btn-primary", id="btn">
     <%= form.label :end_date %>
     <%= form.datetime_select :end_date %>
   </div>
-
-  <div class="field">
+  <br>
+  <div class="btn btn-primary", id="btn">
     <%= form.label :kind_of_task %>
     <%= form.text_field :kind_of_task %>
   </div>
-
-  <div class="field">
+  <br>
+  <div class="btn btn-primary", id="btn">
     <%= form.label :priority %>
-    <%= form.text_field :priority %>
+    <%= form.select :status, [ 'high', 'medium', 'low' ], :prompt => 'Select One' %>
   </div>
-
-  <div class="field">
+  <br>
+  <div class="btn btn-primary", id="btn">
     <%= form.label :status %>
     <%= form.select :status, [ 'not started', 'done', 'in progress' ], :prompt => 'Select One' %>
-  </div>
+  
+    </div>
 
- 
-
-  <div class="actions">
+    <br>
+  <div class="btn btn-primary", id="btn">
     <%= form.submit %>
   </div>
 <% end %>

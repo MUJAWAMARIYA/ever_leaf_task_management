@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <%= paginate @tasks %>
-<h1>Tasks</h1>
+<h1>Tasks created by user</h1>
 
 <table>
   <thead>
@@ -46,9 +46,9 @@
 </div>
 <br>
 <p>Sort by: 
-<%= link_to "sort by deadline", tasks_path(sort_by: 'end_date')  %>
-<%= link_to "status", tasks_path(order: 'status') %>
-<%= link_to "priority", tasks_path(order: 'priority') %>
+<p  class="btn btn-outline-success",id="btnn"><%= link_to "sort by deadline", tasks_path(sort_by: 'end_date')  %></p>
+<p  class="btn btn-outline-success"><%= link_to "status", tasks_path(order: 'status') %></p>
+<p  class="btn btn-outline-success"><%= link_to "priority", tasks_path(order: 'priority') %>
 </p>
 <br>
 <%= link_to 'New Task', new_task_path %>

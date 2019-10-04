@@ -23,10 +23,11 @@ class Admin::UsersController < Admin::ApplicationController
      end
    end
  
-#   def show
-#     @user = User.find(params[:id])
-#     @admin = @user.name
-#   end
+   def show
+    # @user = User.find(params[:id])
+    @user = current_user
+    redirect_to root_path, warning: "You are not authorized" unless @user.admin?
+   end
    def edit   
      @user= User.find(params[:id])   
    end   
@@ -67,7 +68,11 @@ class Admin::UsersController < Admin::ApplicationController
    def user_params
      params.require(:user).permit(:name, :email, :password, :password_confirmation,:title)
    end
-  
+   def must_be_admin
+    unless current_user && current_user.admin?
+      redirect_to root_path, notice: "Some message"
+    end
+  end
  end
  
  
