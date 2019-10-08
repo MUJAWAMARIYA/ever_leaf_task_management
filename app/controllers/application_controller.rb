@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
     def self.search(term, page)
         if term
-          where('priority LIKE ?', "%#{term}%").order('id DESC')
+          where('priority LIKE ?', "%#{term}%").order('id: :DESC')
         else
           # note: default is all, just sorted
           order('id DESC')

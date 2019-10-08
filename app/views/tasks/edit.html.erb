@@ -1,6 +1,48 @@
-<h1>Editing Task</h1>
+<div class="container">   
+  
+<%= form_for @task, url: {action: :update} do |f| %>   
+     
+   <h3>Add a task</h3>   
+ <%= "<div>#{@task.errors.full_messages.first}</div>".html_safe if @task.errors.any? %>   
+ <div class="btn btn-primary", id="btn">
+ <%= f.label :titles %>
+ <%= f.text_field :titles %><br>
+</div>
+<br>
+<div class="btn btn-primary", id="btn">
+ <%= f.label :content %>
+ <%= f.text_field :content %>
+</div>
+<br>
+<div class="btn btn-primary", id="btn">
+ <%= f.label :start_date %>
+ <%= f.datetime_select :start_date %>
+</div>
+<br>
+<div class="btn btn-primary", id="btn">
+ <%= f.label :end_date %>
+ <%= f.datetime_select :end_date %>
+</div>
+<br>
+<div class="btn btn-primary", id="btn">
+ <%= f.label :kind_of_task %>
+ <%= f.text_field :kind_of_task %>
+</div>
+<br>
+<div class="btn btn-primary", id="btn">
+ <%= f.label :priority %>
+ <%= f.select :priority, [ 'high', 'medium', 'low' ], :prompt => 'Select One' %>
+</div>
+<br>
+<div class="btn btn-primary", id="btn">
+ <%= f.label :status %>
+ <%= f.select :status, [ 'not started', 'done', 'in progress' ], :prompt => 'Select One' %>
 
-<%= render 'form', task: @task %>
+ </div>
 
-<%= link_to 'Show', @task %> |
-<%= link_to 'Back', tasks_path %>
+ <br>
+   <div>   
+      <%= link_to 'Back', { controller: 'tasks', action: 'index'} %>   
+      <%= f.submit 'Update task' %>   
+    </div>   
+<% end %>   

@@ -47,8 +47,8 @@
 <br>
 <p>Sort by: 
 <p  class="btn btn-outline-success",id="btnn"><%= link_to "sort by deadline", tasks_path(sort_by: 'end_date')  %></p>
-<p  class="btn btn-outline-success"><%= link_to "status", tasks_path(order: 'status') %></p>
-<p  class="btn btn-outline-success"><%= link_to "priority", tasks_path(order: 'priority') %>
+<p  class="btn btn-outline-success"><%= link_to "status", tasks_path(sort_by: 'status') %></p>
+<p  class="btn btn-outline-success"><%= link_to "priority", tasks_path(sort_by: 'priority') %>
 </p>
 <br>
 <%= link_to 'New Task', new_task_path %>
