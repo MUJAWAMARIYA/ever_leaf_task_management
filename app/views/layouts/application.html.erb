@@ -35,8 +35,9 @@
 
 </header>
 </div>
-<div class="body">
 
+<div class="body">
+<%= t('view.sample') %>
  <% flash.each do |key, value| %>
          <%= content_tag(:div, value, class: "#{key}") %>
       <% end %>
@@ -44,7 +45,7 @@
     
     <%= yield %>
  
-    <%= t('view.sample') %>
+ 
     <div class="footer">
     <h2> welcome to task management app</h2>
     </div>
