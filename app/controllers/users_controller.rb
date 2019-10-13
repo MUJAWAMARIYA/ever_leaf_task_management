@@ -1,11 +1,18 @@
 class UsersController < ApplicationController
   before_action :must_be_admin, only: :edit
   before_action :check_user, only: [:index]
+  before_action :authorize_admin, only: :index
   def index
     @users = User.all
+    if logged_in?
+      render "admin/show"
+    else
+      render 'index'
+    end
   end
   def new
     @user = User.new
+
   
   end
   def create
@@ -79,6 +86,18 @@ end
       redirect_to tasks_path, notice: "only admin can access this page"
     end
   end
+  def admin_user
+    redirect_to(root_path) unless current_user && current_user.admin?
  end
+end
  
+ def require_admin
+  if !current_user.admin
+    if request.xhr?
+      head :unauthorized # for asynchronous/api requests, if you want.
+    else
+      render 'access/no_access' and return # or whatever.
+    end
+  end
+  end 
  
