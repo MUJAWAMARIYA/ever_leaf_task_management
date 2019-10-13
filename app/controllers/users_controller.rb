@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :must_be_admin, only: :edit
+  before_action :check_user, only: [:index]
   def index
     @users = User.all
   end
@@ -71,6 +72,11 @@ end
   def must_be_admin
     unless current_user && current_user.admin?
       redirect_to new_user_path, notice: "Some message"
+    end
+  end
+  def check_user
+    if current_user.title != "admin"
+      redirect_to tasks_path, notice: "only admin can access this page"
     end
   end
  end

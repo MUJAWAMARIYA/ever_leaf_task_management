@@ -1,5 +1,6 @@
 class Admin::UsersController < Admin::ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :check_user, only: [:index]
   def index
   
       # unless current_user.admin?
@@ -24,7 +25,7 @@ class Admin::UsersController < Admin::ApplicationController
    end
  
    def show
-    # @user = User.find(params[:id])
+    
     @user = current_user
     redirect_to root_path, warning: "You are not authorized" unless @user.admin?
    end
@@ -68,9 +69,15 @@ class Admin::UsersController < Admin::ApplicationController
    def user_params
      params.require(:user).permit(:name, :email, :password, :password_confirmation,:title)
    end
-   def must_be_admin
+   
+  def must_be_admin
     unless current_user && current_user.admin?
-      redirect_to root_path, notice: "Some message"
+      redirect_to new_user_path, notice: "Some message"
+    end
+  end
+  def check_user
+    if current_user && current_user.title != "admin"
+      redirect_to root_path, notice: "only admin can access this page"
     end
   end
  end
