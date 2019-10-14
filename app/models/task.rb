@@ -3,6 +3,8 @@ class Task < ApplicationRecord
 enum priority: [:low, :medium, :high]
 
 validate :start_date_cannot_be_later_than_end_date
+
+before_destroy :check_destroy
  belongs_to :user, optional: true
  
 def self.search(term)
@@ -34,5 +36,10 @@ def start_date_cannot_be_later_than_end_date
   end
 
 end
-end
 
+def check_destroy
+    errors.add(:base, "Cannot delete booking with payments") 
+
+    errors.blank? #return false, to not destroy the element, otherwise, it will delet
+end
+end

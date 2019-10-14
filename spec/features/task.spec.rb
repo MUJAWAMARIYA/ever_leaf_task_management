@@ -54,11 +54,11 @@ end
  assert Task.order('created_at DESC')
  end
  it "Validation does not pass if the titles is empty" do
-   task = Task.new(titles: '', content: 'Failure test')
+   task = Task.new(titles: '', content: 'Failure test',start_date: '10-03-2019', end_date: '13-03-2019')
    expect(task).not_to be_valid
  end
  it "Validation does not pass if content is empty" do
-   task = Task.new(titles: 'web', content: '')
+   task = Task.new(titles: 'web', content: '',start_date: '10-03-2019', end_date: '13-03-2019')
    expect(task).not_to be_valid
  end
  it "Validation does not pass if start_date_cannot_be_later_than_end_date " do

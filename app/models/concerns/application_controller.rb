@@ -6,4 +6,12 @@ class Admmin::ApplicationController < Admin::ActionController::Base
         @current_user ||= User.where(id: session[:user_id]).first
     end
     helper_method :current_user
+    def destroy
+        @task = Task.find(params[:id])
+        if current_user == @task.user
+            @task.destroy
+        end
+
+        redirect_to tasks_path
+end
 end
