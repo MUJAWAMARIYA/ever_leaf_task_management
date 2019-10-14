@@ -62,7 +62,7 @@ end
    expect(task).not_to be_valid
  end
  it "Validation does not pass if start_date_cannot_be_later_than_end_date " do
-  task = Task.new(start_date: '1-02-2019', end_date: '20-05-2019')
+  task = Task.new(start_date: '1-02-2019', end_date: '20-01-2019')
   expect(task).not_to be_valid
 end
  it "validation passes If content is described in titles and content" do

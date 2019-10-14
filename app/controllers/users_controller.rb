@@ -61,7 +61,7 @@ end
 
 def must_be_admin
   unless current_user && current_user.admin?
-    redirect_to root_path, notice: "Some message"
+    redirect_to user_path, notice: "admin can make some update on his/her choice "
   end
 end
   private
@@ -71,12 +71,12 @@ end
   
   def must_be_admin
     unless current_user && current_user.admin?
-      redirect_to new_user_path, notice: "Some message"
+      redirect_to new_user_path, notice: "admin can make some update on his/her choice "
     end
   end
   def check_user
     if current_user.title != "admin"
-      redirect_to tasks_path, notice: "only admin can access this page"
+      redirect_to root_path, notice: "only admin can access this page"
     end
   end
  end

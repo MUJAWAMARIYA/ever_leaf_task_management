@@ -56,7 +56,7 @@ margin-left: 15rem;
     font-family:'Lucida Sans';
 }
 #btn{
-    margin-left: 8rem;
+    margin-left: 8rem; 
     width: 60%;
     padding:8px;
 background-color: #EBD9DD;
@@ -71,4 +71,8 @@ color: black;
     background-color: pink;
     margin-left: 5rem;
     width: 60%;
+}
+#btns
+{
+    margin-left: 48rem;    
 }

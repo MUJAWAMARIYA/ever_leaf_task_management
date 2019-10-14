@@ -1,0 +1,43 @@
+<div class="container">   
+  
+<%= form_for @user, url: {action: :update} do |f| %>   
+     
+   <h3>Add a user</h3>   
+ <%= "<div>#{@user.errors.full_messages.first}</div>".html_safe if @user.errors.any? %>   
+    <p>   
+  
+     <div>   
+            <label>user Name</label>   
+            <%= f.text_field :name %>   
+     </div>   
+  
+     <div>   
+            <label>name</label>   
+            <%= f.text_field :name%>   
+     </div>   
+        
+     <div>   
+            <label>email<label>   
+            <%= f.text_field :email %>   
+     </div>   
+     <div>   
+            <label>password<label>   
+            <%= f.password_field :password%>   
+     </div>   
+  
+     <div>   
+     <label>password_confirmation<label>   
+     <%= f.password_field :email %>   
+</div>   
+
+     <div>   
+            <label>title<label>   
+            <%= f.text_field :title %>   
+     </div>   
+  
+      </p>   
+   <div>   
+      <%= link_to 'Back', { controller: 'users', action: 'index'} %>   
+      <%= f.submit 'Update user' %>   
+    </div>   
+<% end %>   
