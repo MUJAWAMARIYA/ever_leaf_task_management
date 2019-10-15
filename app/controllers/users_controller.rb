@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :must_be_admin, only: :edit
-  before_action :check_user, only: [:index]
+  before_action :must_be_admin, only: [:edit]
+  before_action :check_user, only: [:index,:edit]
   def index
     @users = User.all
   end
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     @user= User.find(params[:id])   
     if @user.update_attributes(user_params)   
       flash[:notice] = 'user updated!'   
-      redirect_to root_path   
+      redirect_to edit_user_path(user)
     else   
       flash[:error] = 'Failed to edit user!'   
       render :edit   
@@ -59,14 +59,9 @@ def current_user
   User.find_by(id: session[:user_id])
 end
 
-def must_be_admin
-  unless current_user && current_user.admin?
-    redirect_to user_path, notice: "admin can make some update on his/her choice "
-  end
-end
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation,:title)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation,:title, :admin, :user_id)
   end
   
   def must_be_admin
@@ -75,7 +70,7 @@ end
     end
   end
   def check_user
-    if current_user.title != "admin"
+    if current_user && current_user.title != "admin"
       redirect_to root_path, notice: "only admin can access this page"
     end
   end

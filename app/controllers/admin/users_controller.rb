@@ -3,13 +3,9 @@ class Admin::UsersController < Admin::ApplicationController
   before_action :check_user, only: [:index]
   def index
   
-      # unless current_user.admin?
-      #   redirect_to :users, :alert => "Access denied."
-      # end
       @users = User.all
     end
     
-  
   def new
     @user = User.new
   

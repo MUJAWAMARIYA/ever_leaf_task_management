@@ -1,4 +1,4 @@
-class Admmin::ApplicationController < Admin::ActionController::Base
+class Admin::ApplicationController < Admin::ActionController::Base
     protect_from_forgery with: :exception
     add_flash_types :danger, :info, :warning, :success
 
@@ -14,4 +14,5 @@ class Admmin::ApplicationController < Admin::ActionController::Base
 
         redirect_to tasks_path
 end
+
 end

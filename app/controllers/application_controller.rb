@@ -19,4 +19,7 @@ def authorize_admin
   redirect_to :back, status: 401 unless current_user.admin
   #redirects to previous page
 end
+def authorize
+  redirect_to new_session_url, alert: "Not authorized" if current_user.nil?
+  end
 end

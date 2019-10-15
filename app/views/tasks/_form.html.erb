@@ -46,7 +46,9 @@
     <%= form.select :status, [ 'not started', 'done', 'in progress' ], :prompt => 'Select One' %>
   
     </div>
-
+    <div class="field">
+    <%= form.hidden_field :user_id %>
+  </div
     <br>
   <div class="btn btn-primary", id="btn">
     <%= form.submit %>

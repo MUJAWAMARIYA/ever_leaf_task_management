@@ -1,47 +1,64 @@
+# In this require, the feature required for Feature Spec such as Capybara are available.
 require 'rails_helper'
+# On the right side of this RSpec.feature, write the test item name like "task management feature" (grouped by do ~ end)
+RSpec.feature "user management function", type: :feature do
+# In scenario (alias of it), write the processing of the test for each item you want to check.
+background do
+  User.create!(name: "margo", email: 'margo@gmail.Com', title: 'admin',  password: '0000000')
+  visit  root_path
+  #click_on 'Login'
+  fill_in  'Email' ,  with: 'margo@gmail.Com'
+  fill_in  'Password' ,  with: '0000000'
+  click_on  'Login'
+end
 
-RSpec.describe User, :type => :model do
-  subject { described_class.new(password: "some_password", email: "john@doe.com") }
+scenario "Test number of users" do
+  User.create!(name: 'margo', email: 'margo@gmail.com', title: 'admin', password: '0000000')
+  @user = User.all.count
+  expect(@user).to eq 2
+end
+scenario "Test user list" do
+    User.create!(name: 'margo', email: 'margo@gmail.com', title: 'admin', password: '0000000')
+  visit users_path
+  expect(page ).to  have_content  'margo'
+  expect(page ).to  have_content  'margo'
+ end
+scenario 'tries to view list of users on users index page' do
+  visit users_path #try to enter to users index page
+  expect(current_path).to eq users_path #check current path
+  expect(page).to have_content 'margo' #check for User 1 from 'background'
+  expect(page).to have_content 'margo' #check for User 2 from 'background'
+end
 
-  describe "Validations" do
-    it "is valid with valid attributes" do
-      expect(subject).to be_valid
-    end
+scenario "Test user creation" do
+  User.create!(name: 'margos', email: 'margos@gmail.com', title: 'admin', password: '0000000')
+  visit users_path
+  expect(page ).to  have_text 'margos'
+end
 
-    it "is not valid without a password" do
-      subject.password = nil
-      expect(subject).to_not be_valid
-    end
-
-    it "is not valid without an email" do
-      subject.email = nil
-      expect(subject).to_not be_valid
-    end
-  end
-#   describe "Associations" do
-#     it { belong_to(:user) }
-#     it { belong_to(:user) }
-#   end
-#   scenario "Test user creation" do
-#     User.create!(name: "margo", email: 'm@gmail.Com',  password: '1234567')
-#     visit  root_path
-#    fill_in  'Email',  with: 'm@gmail.Com'
-#    fill_in  'Password' ,  with: '1234567'
-#    click_on  'Log in'
-#  expect(page).to have_text('')
-#     visit  user_path
-#      fill_in  'Titles' ,  with: 'grettings'
-#      fill_in  'Content' ,  with: 'testtesttest'
-#      click_on 'Create user'
-#      expect(page).to have_text('')
-#    end
-#    scenario "Test user details" do
-#     visit  root_path
-#     fill_in  'Email',  with: 'm@gmail.Com'
-#    fill_in  'name',  with: 'mmmmm'
-#      click_on  'details'
-#      expect(page ).to have_text('')
-    
-    
-#    end
+scenario "Test user details" do
+  @user= User.create!(name: 'margo', email: 'margo@gmail.com', title: 'admin', password: '0000000')
+  visit user_path(id: @user.id)
+  expect(page).to have_content('margo@gmail.com')
+  expect(page).to have_content('admin')
+end
+scenario "Test task updating" do
+  @user = User.first
+  visit edit_user_path(id: @user.id)
+  fill_in 'Name', with: 'name update'
+  #fill_in 'Content', with: 'content update'
+  click_on 'Create my account'
+  visit users_path
+  expect(page).to have_text('')
+  #expect(page).to have_content('content update')
+end
+scenario 'Test Task Deletion' do
+  User.create!(name: 'margo', email: 'margo@gmail.com', title: 'admin', password: '0000000')
+  @user = User.last
+  @user.destroy
+  # expect(page).to have_content('testtesttest')
+  # click_on 'Destroy'
+  visit users_path
+  expect(page).not_to have_text('User was successfully deleted')
+end
 end

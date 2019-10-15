@@ -18,8 +18,10 @@
               <%= @user.title %>   
             </div>   
          
-      <div>   
+      <div>  
+      
       <%= link_to 'New Task', new_task_path %>
+      <%= link_to 'Edit', edit_user_path(@user) %> 
         <%= link_to 'Back', { controller: 'users', action: 'index'} %>   
       </div>   
 </div>  
