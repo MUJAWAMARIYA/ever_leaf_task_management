@@ -42,7 +42,7 @@ scenario "Test user details" do
   expect(page).to have_content('margo@gmail.com')
   expect(page).to have_content('admin')
 end
-scenario "Test task updating" do
+scenario "Test user updating" do
   @user = User.first
   visit edit_user_path(id: @user.id)
   fill_in 'Name', with: 'name update'
@@ -52,7 +52,7 @@ scenario "Test task updating" do
   expect(page).to have_text('')
   #expect(page).to have_content('content update')
 end
-scenario 'Test Task Deletion' do
+scenario 'Test user Deletion' do
   User.create!(name: 'margo', email: 'margo@gmail.com', title: 'admin', password: '0000000')
   @user = User.last
   @user.destroy
