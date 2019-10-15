@@ -12,14 +12,14 @@
       <th>Kind of task</th>
       <th>Priority</th>
       <th>Status</th>
-      
+      <th>User</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @tasks.each do |task| %>
-      
+      <% if task.user_id == current_user.id %>
       <tr>
         <td><%= task.titles%></td>
         <td><%= task.content %></td>
@@ -29,7 +29,7 @@
         <td><%= task.priority %></td>
         <td><%= task.status %></td>
        
-        
+        <td><%= task.user.name %></td>
         <td><%= link_to 'Show', task %></td>
        
         <td><%= link_to 'Edit', edit_task_path(task) %></td>
@@ -37,7 +37,7 @@
         
        
         </tr>
-     
+        <% end %>
     <% end %>
   </tbody>
 </table>
