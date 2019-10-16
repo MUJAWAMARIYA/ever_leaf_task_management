@@ -51,7 +51,7 @@ expect(page).to have_text('')
    fill_in  'Content' ,  with: 'test'
    click_on 'Create Task'
    
-   expect(page).to have_text('test')
+   expect(page).to have_content('test')
  end
  scenario 'task must be true' do
   
