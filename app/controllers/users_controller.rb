@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
   before_action :must_be_admin, only: [:edit]
-  before_action :check_user, only: [:index]
-  before_action :authorize_user!, only: :index
-  
-  
+  #before_action :check_user, only: [:index]
+ before_action :only_create_user_when_none_signed_in, only: [:new, :create]
+  before_action :only_see_own_page, only: [:show]
   def index
     @users = User.all
   end
@@ -79,8 +78,17 @@ end
   end
  
 
-  def authorize_user!
-    redirect_to root_path unless session[:user_id].present?
+  def only_create_user_when_none_signed_in
+    if current_user
+      redirect_to tasks_path,  notice: "you can't create user when signed in"
+    end
+  end
+
+  def only_see_own_page
+    @user = User.find(params[:id])
+    if current_user != @user
+      redirect_to users_path, notice: "Sorry, but you are only allowed to view your own profile page."
+    end
   end
  end
  
