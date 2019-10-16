@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   before_action :must_be_admin, only: [:edit]
-  before_action :check_user, only: [:index,:edit]
+  before_action :check_user, only: [:index]
+  before_action :authorize_user!, only: :index
+  
+  
   def index
     @users = User.all
   end
@@ -73,6 +76,11 @@ end
     if current_user && current_user.title != "admin"
       redirect_to root_path, notice: "only admin can access this page"
     end
+  end
+ 
+
+  def authorize_user!
+    redirect_to root_path unless session[:user_id].present?
   end
  end
  

@@ -4,7 +4,7 @@ require 'rails_helper'
 RSpec.feature "user management function", type: :feature do
 # In scenario (alias of it), write the processing of the test for each item you want to check.
 background do
-  User.create!(name: "margo", email: 'margo@gmail.Com', title: 'admin',  password: '0000000')
+  User.create!(name: "margos", email: 'margo@gmail.Com', title: 'admin',  password: '0000000')
   visit  root_path
   #click_on 'Login'
   fill_in  'Email' ,  with: 'margo@gmail.Com'
@@ -13,32 +13,33 @@ background do
 end
 
 scenario "Test number of users" do
-  User.create!(name: 'margo', email: 'margo@gmail.com', title: 'admin', password: '0000000')
+  User.create!(name: 'margos', email: 'margo@gmail.com', title: 'admin', password: '0000000')
   @user = User.all.count
   expect(@user).to eq 2
 end
 scenario "Test user list" do
     User.create!(name: 'margo', email: 'margo@gmail.com', title: 'admin', password: '0000000')
-  visit users_path
-  expect(page ).to  have_content  'margo'
-  expect(page ).to  have_content  'margo'
+  visit admin_users_path
+  expect(page ).to  have_content  'margos'
+  expect(page ).to  have_content  'margos'
  end
 scenario 'tries to view list of users on users index page' do
-  visit users_path #try to enter to users index page
-  expect(current_path).to eq users_path #check current path
-  expect(page).to have_content 'margo' #check for User 1 from 'background'
-  expect(page).to have_content 'margo' #check for User 2 from 'background'
+  visit admin_users_path #try to enter to users index page
+  expect(current_path).to eq current_path #check current path
+  expect(page).to have_text'margos' #check for User 1 from 'background'
+  expect(page).to have_text'margos'
 end
 
 scenario "Test user creation" do
   User.create!(name: 'margos', email: 'margos@gmail.com', title: 'admin', password: '0000000')
-  visit users_path
-  expect(page ).to  have_text 'margos'
+  visit admin_users_path
+  expect(page ).to  have_content 'margos'
 end
 
 scenario "Test user details" do
-  @user= User.create!(name: 'margo', email: 'margo@gmail.com', title: 'admin', password: '0000000')
+  @user= User.create!(name: 'margos', email: 'margo@gmail.com', title: 'admin', password: '0000000')
   visit user_path(id: @user.id)
+  expect(page).to have_content('margos')
   expect(page).to have_content('margo@gmail.com')
   expect(page).to have_content('admin')
 end
@@ -53,7 +54,7 @@ scenario "Test user updating" do
   #expect(page).to have_content('content update')
 end
 scenario 'Test user Deletion' do
-  User.create!(name: 'margo', email: 'margo@gmail.com', title: 'admin', password: '0000000')
+  User.create!(name: 'margos', email: 'margo@gmail.com', title: 'admin', password: '0000000')
   @user = User.last
   @user.destroy
   # expect(page).to have_content('testtesttest')

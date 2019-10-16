@@ -1,24 +1,10 @@
 <% @users.each do |user| %>
     <h1> user list screen of management screen!</h1>
      <div class="admin">
-    name is : <% user.id %> <%= user.name %><br>
+    name: <%= user.name %><br>
     email:<%= user.email %><br>
     title: <%= user.title %><br><br>
     </div>
-    <%= link_to 'Edit', edit_user_path(user) %>
     
-         <%= link_to 'details', user_path(user) %>   
-       
-        <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
-   
-#     <h2>Manage Users</h2>
-# <p>As an administrator, you can add new users to the system. You can also edit or delete existing ones.</p>
-# <p>
-#     <% @users = User.all %>
-#     <ul class="users">
-#         <% @users.each do |user| %>
-#     <li><%= user.id %> <%= user.name %> <%= user.title %> <%= user.email %> <%= link_to "Edit User", edit_user_details_path(id: user.id) %></li>
-#         <% end %>
-#     </ul>
-# </p>
+    

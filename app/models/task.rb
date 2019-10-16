@@ -5,7 +5,7 @@ enum priority: [:low, :medium, :high]
 validate :start_date_cannot_be_later_than_end_date
 validates :user_id, presence: true
 before_destroy :check_destroy
- belongs_to :user, optional: true
+ belongs_to :user, :dependent => :destroy
  
 def self.search(term)
     if term

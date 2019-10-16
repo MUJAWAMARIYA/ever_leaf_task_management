@@ -11,10 +11,17 @@ RSpec.feature "Task management function", type: :feature do
   expect(page).to have_text('')
 end
 scenario "Test task list" do
- 
+  visit  root_path
+  Task.create(titles: "web", content: "testtest", start_date: "10,12,2019",end_date: "12,12,2019", kind_of_task:"kkkk",priority:"medium",status: "done")
+  fill_in  'Email',  with: 'm@gmail.Com'
+  fill_in  'Password' ,  with: '1234567'
+  click_on  'Log in'
+expect(page).to have_text('')
    visit  new_task_path
-   fill_in  'Titles' ,  with: 'grettings'
+   fill_in  'Titles' ,  with: 'web'
    fill_in  'Content' ,  with: 'testtest'
+   fill_in  'Start_date' ,  with: '1-02-2019'
+   fill_in  'End_date' ,  with: '15-02-2019'
    click_on 'Create Task'
    expect(page).to have_content 'testtest'
 end
@@ -22,9 +29,13 @@ end
 # visit tasks_path
  # write a test to verify that the string "" testtesttest "" samplesample "is included when accessing the task list page using have_content method
  scenario "Test task creation" do
- 
+  visit  new_session_path
+  fill_in  'Email',  with: 'm@gmail.Com'
+  fill_in  'Password' ,  with: '1234567'
+  click_on  'Log in'
+expect(page).to have_text('')
   visit  new_task_path
-   fill_in  'Titles' ,  with: 'grettings'
+   fill_in  'Titles' ,  with: 'web'
    fill_in  'Content' ,  with: 'testtesttest'
    click_on 'Create Task'
    expect(page).to have_text('Task was successfully created.')
@@ -36,7 +47,7 @@ end
   #  click_on  'Log in'
   #  expect(page ).to have_text('')
   visit  new_task_path
-   fill_in  'Titles' ,  with: 'grettings'
+   fill_in  'Titles' ,  with: 'web'
    fill_in  'Content' ,  with: 'test'
    click_on 'Create Task'
    
@@ -45,7 +56,7 @@ end
  scenario 'task must be true' do
   
   visit  new_task_path
-   fill_in  'Titles' ,  with: ' '
+   fill_in  'Titles' ,  with: ' web'
    fill_in  'Content' ,  with: 'test'
    click_on 'Create Task'
    expect(page).to have_text('1 error prohibited this task from being saved:')
@@ -68,8 +79,10 @@ end
  it "validation passes If content is described in titles and content" do
  
   visit  new_task_path
-  fill_in  'Titles' ,  with: 'Test Titles'
+  fill_in  'Titles' ,  with: 'web'
   fill_in  'Content' ,  with: 'test'
+  fill_in  'Start_date' ,  with: '1-02-2019'
+  fill_in  'End_date' ,  with: '15-02-2019'
    click_on 'Create Task'
    # task = Task.new(title: 'Test', content: 'Failure test')
    expect(page).to have_text('Task was successfully created.')
@@ -92,13 +105,14 @@ end
   visit  root_path
   fill_in  'Email',  with: 'm@gmail.Com'
    fill_in  'Password' ,  with: '1234567'
-   click_on  'Log in'
-   expect(page).to have_text('')
+   click_on  'Login'
+   expect(page).to have_text('Sample')
    Task.create(titles: "web", content: "testtest", start_date: "10,12,2019",end_date: "12,12,2019", kind_of_task:"kkkk",priority:"medium",status: "done")
-  fill_in  'term',  with: ''
+  fill_in  'term',  with: 'web'
   
   click_on "Search"
-  expect(page).to have_content('done')
-   visit  new_task_path
+  #visit tasks_path
+  expect(page).to have_text('web')
+  
  end
  end
