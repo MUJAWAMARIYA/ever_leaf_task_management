@@ -15,7 +15,7 @@ end
 scenario "Test number of users" do
   User.create!(name: 'margos', email: 'margo@gmail.com', title: 'admin', password: '0000000')
   @user = User.all.count
-  expect(@user).to eq 2
+  expect(@user).to eq 3
 end
 scenario "Test user list" do
     User.create!(name: 'margo', email: 'margo@gmail.com', title: 'admin', password: '0000000')

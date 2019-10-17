@@ -20,6 +20,6 @@ def authorize_admin
   #redirects to previous page
 end
 def authorize
-  redirect_to new_session_url, alert: "Not authorized" if current_user.nil?
+  redirect_to new_session_url, alert: "" if current_user.nil?
   end
 end

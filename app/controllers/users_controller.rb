@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :must_be_admin, only: [:edit]
-  #before_action :check_user, only: [:index]
+  before_action :check_user, only: [:index]
  before_action :only_create_user_when_none_signed_in, only: [:new, :create]
   before_action :only_see_own_page, only: [:show]
   def index
