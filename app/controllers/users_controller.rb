@@ -38,8 +38,7 @@ class UsersController < ApplicationController
       render :edit   
     end   
   end   
-   
-  # DELETE method for deleting a product from database based on id   
+    
   def destroy   
     @user = User.find(params[:id]) 
    if @user.tasks.present?
