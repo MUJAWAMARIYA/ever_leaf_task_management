@@ -41,10 +41,14 @@ class UsersController < ApplicationController
    
   # DELETE method for deleting a product from database based on id   
   def destroy   
-    @user = User.find(params[:id])   
+    @user = User.find(params[:id]) 
+   if @user.tasks.present?
+    Task.where(user_id: params[:id]).destroy_all
+   end
     if @user.delete   
       flash[:notice] = 'user deleted!'   
       redirect_to users_path   
+      
     else   
       flash[:error] = 'Failed to delete this user!'   
       render :destroy   

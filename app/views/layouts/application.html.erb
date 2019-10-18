@@ -30,7 +30,7 @@
 <div  class="btn btn-outline-success",id="btnn">
 
 <% if logged_in? %>
-<p  class="btn btn-outline-success",id="btnn"><%= link_to 'all users registered', users_path %> </p>
+<p  class="btn btn-outline-success",id="btnn"><%= link_to 'user list registered', users_path %> </p>
 <p  class="btn btn-outline-success",id="btnn"><%= link_to 'all tasks created', tasks_path %> </p>
 <p  class="btn btn-outline-success",id="btnn"><%= link_to "Logout", session_path(current_user.id), method: :delete %></p>
 <% else %>
