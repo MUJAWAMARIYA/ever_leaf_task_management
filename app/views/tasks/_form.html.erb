@@ -1,0 +1,56 @@
+<%= form_with(model: task, local: true) do |form| %>
+  <% if task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="btn btn-primary", id="btn">
+    <%= form.label :titles %>
+    <%= form.text_field :titles %><br>
+  </div>
+  <br>
+  <div class="btn btn-primary", id="btn">
+    <%= form.label :content %>
+    <%= form.text_field :content %>
+  </div>
+  <br>
+  <div class="btn btn-primary", id="btn">
+    <%= form.label :start_date %>
+    <%= form.datetime_select :start_date %>
+  </div>
+  <br>
+  <div class="btn btn-primary", id="btn">
+    <%= form.label :end_date %>
+    <%= form.datetime_select :end_date %>
+  </div>
+  <br>
+  <div class="btn btn-primary", id="btn">
+    <%= form.label :kind_of_task %>
+    <%= form.text_field :kind_of_task %>
+  </div>
+  <br>
+  <div class="btn btn-primary", id="btn">
+    <%= form.label :priority %>
+    <%= form.select :priority, [ 'high', 'medium', 'low' ], :prompt => 'Select One' %>
+  </div>
+  <br>
+  <div class="btn btn-primary", id="btn">
+    <%= form.label :status %>
+    <%= form.select :status, [ 'not started', 'done', 'in progress' ], :prompt => 'Select One' %>
+  
+    </div>
+    <div class="field">
+    <%= form.hidden_field :user_id, value: 'current_user.id' %>
+  </div
+    <br>
+  <div class="btn btn-primary", id="btn">
+    <%= form.submit %>
+  </div>
+<% end %>

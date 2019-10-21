@@ -1,0 +1,20 @@
+<h1>welcome to register your task here </h1>
+
+<% provide(:title, "Log in") %>
+<h1>Log in .</h1>
+<%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
+  <div class="btn btn-primary", id="btnn">
+  <%= f.label :email %>
+  <%= f.email_field :email %><br>
+</div>
+<br>
+<div class="btn btn-primary", id="btnn">
+  <%= f.label :password %>
+  <%= f.password_field :password %><br>
+</div>
+<br>
+
+  <p class="btn btn-primary", id="btnn"> <%= f.submit "Log in" %>
+  </p>
+<% end %>
+</div>
