@@ -15,7 +15,6 @@ class TasksController < ApplicationController
     end
   
   end
-  
   # GET /tasks/1
   # GET /tasks/1.json
   def show
