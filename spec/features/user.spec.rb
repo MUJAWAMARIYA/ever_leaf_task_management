@@ -57,8 +57,7 @@ scenario 'Test user Deletion' do
   User.create!(name: 'margos', email: 'margo@gmail.com', title: 'admin', password: '0000000')
   @user = User.last
   @user.destroy
-  # expect(page).to have_content('testtesttest')
-  # click_on 'Destroy'
+
   visit users_path
   expect(page).not_to have_text('User was successfully deleted')
 end
