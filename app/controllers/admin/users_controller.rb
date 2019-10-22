@@ -1,6 +1,7 @@
 class Admin::UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :check_user, only: [:index]
+  # before_action :self.admin
   def index
   
       @users = User.all
@@ -38,19 +39,20 @@ class Admin::UsersController < ApplicationController
        flash[:error] = 'Failed to edit user!'   
        render :edit   
      end   
-   end   
-   
-   # DELETE method for deleting a product from database based on id   
-   def destroy   
-     @user = User.find(params[:id])   
-     if @user.delete   
-       flash[:notice] = 'user deleted!'   
-       redirect_to users_path   
-     else   
-       flash[:error] = 'Failed to delete this user!'   
-       render :destroy   
-     end   
-   end   
+    end
+   # DELETE method for deleting a product from database based on id 
+   def destroy
+     if @user.id == current_user.id
+       redirect_to admin_users_url, notice: "You can not delete signed in user"
+       @admin = User.admin
+     elsif @admin == 1
+      redirect_to admin_users_url, notice: "Atleast one admin must remain!"
+    else
+      @user.destroy
+      redirect_to admin_users_url, notice: 'User was successfully destroyed.'
+    end
+  end  
+
    
    # we used strong parameters for the validation of params   
    # def user_params  
@@ -76,6 +78,10 @@ class Admin::UsersController < ApplicationController
       redirect_to root_path, notice: "only admin can access this page"
     end
   end
+  def set_user
+    @user = User.find(params[:id])
+  end
+
  end
  
  

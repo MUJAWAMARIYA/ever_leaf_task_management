@@ -44,14 +44,17 @@ scenario "Test user details" do
   expect(page).to have_content('admin')
 end
 scenario "Test user updating" do
+ 
   @user = User.first
   visit edit_user_path(id: @user.id)
   fill_in 'Name', with: 'name update'
   #fill_in 'Content', with: 'content update'
+  
   click_on 'Create my account'
   visit users_path
   expect(page).to have_text('')
   #expect(page).to have_content('content update')
+
 end
 scenario 'Test user Deletion' do
   User.create!(name: 'margos', email: 'margo@gmail.com', title: 'admin', password: '0000000')

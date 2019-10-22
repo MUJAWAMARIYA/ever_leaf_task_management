@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
   before_action :must_be_admin, only: [:edit]
-  # before_action :check_user, only: [:index]
+   before_action :check_user, only: [:index]
+  #  before_action :self.admin
  before_action :only_create_user_when_none_signed_in, only: [:new, :create]
   before_action :only_see_own_page, only: [:show]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
   def index
     @users = User.all
   end
@@ -37,20 +39,17 @@ class UsersController < ApplicationController
     end   
   end   
     
-  def destroy   
-    @user = User.find(params[:id]) 
-   if @user.tasks.present?
-    Task.where(user_id: params[:id]).destroy_all
-   end
-    if @user.delete   
-      flash[:notice] = 'user deleted!'   
-      redirect_to users_path   
-      
-    else   
-      flash[:error] = 'Failed to delete this user!'   
-      render :destroy   
-    end   
-  end   
+  def destroy
+     if @user.id == current_user.id
+      redirect_to admin_users_url, notice: "You can not delete signed in user"
+      @admin = User.admin
+     elsif @admin == 1
+      redirect_to admin_users_url, notice: "Atleast one admin must remain!"
+    else
+      @user.destroy
+      redirect_to admin_users_url, notice: 'User was successfully destroyed.'
+    end
+  end
    
   # we used strong parameters for the validation of params   
   # def user_params  
@@ -84,13 +83,17 @@ end
       redirect_to tasks_path,  notice: "you can't create user when signed in"
     end
   end
-
+ 
   def only_see_own_page
     @user = User.find(params[:id])
     if current_user != @user
       redirect_to users_path, notice: "Sorry, but you are only allowed to view your own profile page."
     end
   end
+  def set_user
+    @user = User.find(params[:id])
+  end
+ 
  end
  
  
