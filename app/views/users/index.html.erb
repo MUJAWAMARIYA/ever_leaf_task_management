@@ -8,19 +8,21 @@
       <th>name</th>
       <th>email</th>
       <th>title</th>
+      <th>number of task</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @users.each do |user| %>
-     
+     <% if user.title == "user" %>
+       
       <tr>
      
         <td><%= link_to user.name, user %></td>
         <td><%= user.email %></td>
         <td><%= user.title%></td>
-      
+        <td><%= user.tasks.count%></td>
         <div>  
         <td><%= link_to 'Edit', edit_user_path(user) %></td> 
         <td>   
@@ -31,7 +33,7 @@
       </tr>
       </div>
     <% end %>
-  
+  <% end %>
   </tbody>
 </table>
 

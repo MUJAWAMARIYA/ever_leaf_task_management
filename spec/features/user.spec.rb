@@ -38,7 +38,7 @@ end
 
 scenario "Test user details" do
   @user= User.create!(name: 'margos', email: 'margo@gmail.com', title: 'admin', password: '0000000')
-  visit user_path(id: @user.id)
+  visit admin_users_path(id: @user.id)
   expect(page).to have_content('margos')
   expect(page).to have_content('margo@gmail.com')
   expect(page).to have_content('admin')

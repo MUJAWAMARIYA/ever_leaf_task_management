@@ -6,6 +6,10 @@
     title: <%= user.title %><br><br>
 
     </div>
-    
+    <%= link_to 'Edit', edit_user_path(user) %> 
+       
+         <%= link_to 'details', user_path(user) %>   
+       
+        <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
     
