@@ -6,7 +6,9 @@ validate :start_date_cannot_be_later_than_end_date
 validates :user_id, presence: true
 before_destroy :check_destroy
  belongs_to :user
- 
+ has_many :labels through task_labels
+
+
 def self.search(term)
     if term
         where("status or priority or end_date LIKE ?", "%# {term}%").page params[:page].per_page(3)
