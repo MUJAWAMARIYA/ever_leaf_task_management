@@ -33,6 +33,7 @@
 <p  class="btn btn-outline-success",id="btnn"><%= link_to ' all user list registered', admin_users_path %> </p>
 <p  class="btn btn-outline-success",id="btnn"><%= link_to ' user', users_path %> </p>
 <p  class="btn btn-outline-success",id="btnn"><%= link_to 'all tasks created', tasks_path %> </p>
+<p  class="btn btn-outline-success",id="btnn"><%= link_to 'labels', labels_path %> </p>
 <p  class="btn btn-outline-success",id="btnn"><%= link_to "Logout", session_path(current_user.id), method: :delete %></p>
 <% else %>
 <p  class="btn btn-outline-success",id="btnn"><%= link_to "Sign up", new_user_path %></p>

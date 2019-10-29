@@ -49,6 +49,15 @@
     <div class="field">
     <%= form.hidden_field :user_id, value: 'current_user.id' %>
   </div
+
+  <div class = "tables">
+  <% Label.all.each do |label| %>
+    <% if label.user.id == current_user.id %>
+    <%= form.label:name, label.name %>
+  <%= form.check_box :label_ids, { multiple: true, checked: label[:checked], disabled: label[:disabled], include_hidden: false }, label[:id] %>
+  <% end %>
+  <% end %>
+  </div>
     <br>
   <div class="btn btn-primary", id="btn">
     <%= form.submit %>

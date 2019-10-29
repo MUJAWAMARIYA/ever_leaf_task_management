@@ -4,10 +4,11 @@ enum priority: [:low, :medium, :high]
 
 validate :start_date_cannot_be_later_than_end_date
 validates :user_id, presence: true
-before_destroy :check_destroy
+#before_destroy :check_destroy
  belongs_to :user
- has_many :labels through task_labels
-
+  
+   has_many :tasks_labels, dependent: :destroy
+   has_many :labels, through: :tasks_labels
 
 def self.search(term)
     if term
@@ -28,7 +29,7 @@ def self.order_list(sort_order)
         end
     end
 
-paginates_per 3
+paginates_per 10
 
 
 private

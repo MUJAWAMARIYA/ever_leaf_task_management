@@ -4,12 +4,14 @@
   <tr>
     <th>name</th>
     <th>description</th></th>
+    <th>user name</th></th>
   </tr>
 
   <% @labels.each do |label| %>
     <tr>
       <td><%= label.name %></td>
       <td><%= label.description %></td>
+      <td><%= label.user.name %></td>
       <td><%= link_to 'Edit', edit_label_path(label) %></td> 
         <td>   
          <%= link_to 'details', label_path(label) %>   

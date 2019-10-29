@@ -1,9 +1,9 @@
 class User < ApplicationRecord
-  
+  has_many :labels
    has_secure_password
    has_many :tasks, :dependent => :destroy
    validates :email, presence: true, uniqueness: true
-has_many :tasks through task_labels
+ has_many :tasks, through: :task_labels
 
    def self.admin
       @users = User.all
