@@ -1,0 +1,45 @@
+<h1>Sign up</h1>
+
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this @user from being saved:</h2>
+    <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with(model: @user, local: true) do |f| %>
+  <div class="btn btn-primary", id="btnn">
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
+</div>
+<div class="btn btn-primary", id="btnn">
+  <%= f.label :email %>
+  <%= f.email_field :email %><br>
+</div>
+<div class="btn btn-primary", id="btnn">
+  <%= f.label :password %>
+  <%= f.password_field :password %><br>
+</div>
+<div class="btn btn-primary", id="btnn">
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %><br>
+</div>
+<div class="btn btn-primary", id="btnn">
+  <%= f.label :title%>
+  <%= f.text_field :title %><br>
+</div>
+<div class="btn btn-primary", id="btnn">
+  <%= f.label :admin %>
+  <%= f.text_field :admin %><br>
+  </div>
+  
+<div class="btn btn-primary", id="btnn">
+  <%= f.submit "Create my account" %>
+  </div>
+  <br>
+  <%= link_to 'Back', { controller: 'users', action: 'index'} %> 
+  <% end %>

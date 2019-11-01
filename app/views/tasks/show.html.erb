@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>titles:</strong>
+  <%= @task.titles %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @task.content %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @task.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @task.end_date %>
+</p>
+
+<p>
+  <strong>Kind of task:</strong>
+  <%= @task.kind_of_task %>
+</p>
+
+<p>
+  <strong>Priority:</strong>
+  <%= @task.priority %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @task.status %>
+</p>
+
+<p>
+<p> <h2> Labels attached to this task</h2>
+<% @task.labels.each do |label| %>
+<ul>
+<li class = "user-tasks">
+name:<%= label.name %> <br/>description:<%= label.description %>
+</li>
+</ul>
+<% end %>
+</p>
+<%= link_to 'Back', tasks_path %>
