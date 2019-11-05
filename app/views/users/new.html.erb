@@ -32,7 +32,6 @@
   <%= f.label :title%>
   <%= f.text_field :title, disabled: (true unless current_user && current_user.title == 'admin') %><br>
 </div>
-
 <div class="btn btn-primary", id="btnn">
   <%= f.submit "Create my account" %>
   </div>
