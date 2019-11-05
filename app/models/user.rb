@@ -15,7 +15,6 @@ has_many :labels
       end
       return @admin
     end
-   
 end
 
 
